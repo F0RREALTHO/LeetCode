@@ -13,8 +13,8 @@ public:
                 int sum = nums[i]+nums[l]+nums[k];
                 if(sum==0){
                     ans.push_back({nums[i],nums[l],nums[k]});
-                    if(l<k && nums[l]==nums[l+1]) l++;
-                    if(l<k && nums[k]==nums[k-1]) k--; 
+                    while(l<k && nums[l]==nums[l+1]) l++;
+                    while(l<k && nums[k]==nums[k-1]) k--; 
                     l++;
                     k--;
                 }
