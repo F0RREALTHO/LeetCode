@@ -11,7 +11,7 @@ public:
                 if(j>i+1 && nums[j]==nums[j-1]) continue;
                 int l = j+1, k = n-1;
                 while(l<k){
-                    long long sum = (long long) (nums[i]+nums[j]) +nums[l]+nums[k];
+                    long long sum = (long long) nums[i]+nums[j] +nums[l]+nums[k];
                     if(sum==target){
                         ans.push_back({nums[i],nums[j],nums[l],nums[k]});
                         while(l<k && nums[l]==nums[l+1]) l++;
