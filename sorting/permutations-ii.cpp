@@ -6,8 +6,11 @@ public:
             return;
         }
 
+        unordered_set<int> st;
         for(int j=idx; j<n; j++){
-            if(j>idx && a[j]==a[idx]) continue;
+            if(st.count(a[j])) continue;
+            st.insert(a[j]);
+
             swap(a[idx],a[j]);
 
             f(a,ans,idx+1,n);
@@ -16,8 +19,7 @@ public:
         }
     }
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-        int n = nums.size();
-        sort(nums.begin(),nums.end());    
+        int n = nums.size();  
         vector<vector<int>> ans;
 
 
