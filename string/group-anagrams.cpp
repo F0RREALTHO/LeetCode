@@ -15,7 +15,7 @@ public:
         }
         vector<vector<string>> res;
         for(auto &s:ans){
-            res.push_back(move(s.second));
+            res.push_back(s.second);
         }
         return res;
     }
