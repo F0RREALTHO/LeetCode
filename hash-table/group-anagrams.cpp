@@ -9,7 +9,7 @@ public:
             }
             string k;
             for(int x:cnt){
-                k+= to_string(x);
+                k+= to_string(x)+".";
             }
             ans[k].push_back(s);
         }
