@@ -1,13 +1,13 @@
 class Solution {
 public:
     bool f(string s, int x, int y, vector<vector<char>>& board, string word, vector<vector<bool>>& vis, int n, int m, vector<pair<int,int>>& dir){
-        if(s==word){
+        if(s.size()==word.size()){
             return true;
         }
         // s+= board[x][y];
         for(auto [dx,dy]:dir){
             int nx = x+dx, ny =y+dy;
-            if(nx>=0 && nx<m && ny>=0 && ny<n && !vis[nx][ny]){
+            if(nx>=0 && nx<m && ny>=0 && ny<n && !vis[nx][ny] && board[nx][ny] == word[s.size()]){
                 s+=board[nx][ny];
                 vis[nx][ny]=true;
                 if(f(s,nx,ny,board,word,vis,n,m,dir)) return true;
