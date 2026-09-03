@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    bool f(int idx, int x, int y, vector<vector<char>>& board, string word, int n, int m, vector<pair<int,int>>& dir){
+    bool f(int idx, int x, int y, vector<vector<char>>& board, string& word, int n, int m, vector<pair<int,int>>& dir){
         if(idx==word.size()){
             return true;
         }
