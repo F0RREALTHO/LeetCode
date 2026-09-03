@@ -5,6 +5,7 @@ public:
             ans.push_back(sbq);
             return;
         }
+        if(num>n) return; 
         if(num<=n){
             sbq.push_back(num);
             f(n,k,num+1,sbq,ans);
