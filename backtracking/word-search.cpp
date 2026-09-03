@@ -26,6 +26,7 @@ public:
         vector<vector<bool>> vis (m,vector<bool>(n,false));
         for(int i =0; i<m; i++){
             for(int j =0;j<n;j++){
+                if(board[i][j]!=word[0]) continue;
                 string s ="";
                 s+=board[i][j];
                 vis[i][j]= true;
