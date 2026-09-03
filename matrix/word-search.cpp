@@ -22,6 +22,16 @@ public:
         int m= board.size();
         int n = board[0].size();
 
+        vector<int> cnt(256,0);
+        for(int i =0; i<m;i++){
+            for(int j=0;j<n;j++){
+                cnt[board[i][j]]++;
+            }
+        }
+        if(cnt[word[0]]>cnt[word.size()-1]){
+            reverse(word.begin(),word.end());
+        }
+
         for(int i =0; i<m; i++){
             for(int j =0;j<n;j++){
                 if(board[i][j]!=word[0]) continue;
