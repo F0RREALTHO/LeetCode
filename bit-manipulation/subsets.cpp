@@ -9,7 +9,6 @@ public:
         sbq.push_back(a[idx]);
         f(a,n,idx+1,sbq,ans);
         sbq.pop_back();
-        
         f(a,n,idx+1,sbq,ans);
     }
     vector<vector<int>> subsets(vector<int>& nums) {
