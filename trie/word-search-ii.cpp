@@ -28,13 +28,30 @@ public:
         int n = board[0].size();
 
         if(word.size()>m*n) return false;
+
+        vector<int> cnt(256,0);
+        for(int i =0; i<m;i++){
+            for(int j=0;j<n;j++){
+                cnt[board[i][j]]++;
+            }
+        }
+
+        vector<int> nd(256,0);
+        for(char c:word){
+            nd[c]++;
+            if(nd[c]>cnt[c]) return false;
+        }
+        string w  = word;
+        if(cnt[w[0]]>cnt[w.size()-1])
+            reverse(w.begin(),w.end());
+
         
         for(int i =0; i<m; i++){
             for(int j =0;j<n;j++){
-                if(board[i][j]!=word[0]) continue;
+                if(board[i][j]!=w[0]) continue;
                 char temp = board[i][j];
                 board[i][j]='*';
-                if(f(1,i,j,board,word,n,m,dir)==true){
+                if(f(1,i,j,board,w,n,m,dir)==true){
                     board[i][j]=temp;
                     return true;
                 }
