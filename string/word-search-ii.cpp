@@ -30,12 +30,17 @@ public:
             nd[c]++;
             if(nd[c]>cnt[c]) return false;
         }
-
+        
+        int l = 0, r = word.size()-1;
         bool rev = false;
-        if(cnt[word[0]]>cnt[word.size()-1]){
-            reverse(word.begin(),word.end());
-            rev = true;
+        while(l<r && cnt[word[l]]==cnt[word[r]]){
+            l++; r--;
         }
+        if(l<r && cnt[word[l]]>cnt[word[r]]){
+            reverse(word.begin(),word.end());
+            rev=true;
+        }
+        
 
         bool fnd = false;
         for(int i =0; i<m; i++){
