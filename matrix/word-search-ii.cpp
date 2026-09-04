@@ -1,30 +1,28 @@
 class Solution {
 public:
-    vector<pair<int,int>> dir = {{1,0},{0,1},{-1,0},{0,-1}};
+    int dx[4] ={1,-1,0,0};
+    int dy[4] ={0,0,1,-1};
 
     bool f(int idx, int x, int y, vector<vector<char>>& board, string& word, int n, int m){
         if(idx==word.size()){
             return true;
         }
-        for(auto [dx,dy]:dir){
-            int nx = x+dx, ny =y+dy;
-            if(nx>=0 && nx<m && ny>=0 && ny<n && board[nx][ny]!='*' && board[nx][ny] == word[idx]){
-                char temp = board[nx][ny];
+
+        char tar = word[idx];
+        for(int i =0; i<4;i++){
+            int nx = x+dx[i], ny =y+dy[i];
+            if(nx>=0 && nx<m && ny>=0 && ny<n && board[nx][ny]==tar){
                 board[nx][ny] = '*';
                 if(f(idx+1,nx,ny,board,word,n,m)){
-                    board[nx][ny]=temp;
+                    board[nx][ny]=tar;
                     return true;
                 }
-                board[nx][ny]=temp;
+                board[nx][ny]=tar;
             }
         }
-
         return false;
-
     }
     bool exist(vector<vector<char>>& board, string &word, vector<int>& cnt, int &n, int &m) {
-
-
         if(word.size()>m*n) return false;
 
         int nd[256]={0};
