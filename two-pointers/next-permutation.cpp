@@ -1,34 +1,24 @@
 class Solution {
 public:
-    void f(vector<int>& nums, int n, set<vector<int>>& ans, vector<int>& cur, vector<bool>& vis){
-        if(cur.size()==n){
-            ans.insert(cur);
+    void nextPermutation(vector<int>& nums) {
+        int n = nums.size();
+        int idx = -1;
+        for(int i = n-2; i>=0; i--){
+            if(nums[i]<nums[i+1]){
+                idx = i;
+                break;
+            }
+        }
+        if(idx==-1){
+            reverse(nums.begin(),nums.end());
             return;
         }
-        for(int i=0; i<n; i++){
-            if(vis[i]) continue;
-            vis[i]=true;
-            cur.push_back(nums[i]);
-
-            f(nums,n,ans,cur,vis);
-            vis[i]=false;
-            cur.pop_back();
+        for(int i = n-1;i>idx; i--){
+            if(nums[idx]<nums[i]){
+                swap(nums[idx],nums[i]);
+                break;
+            }
         }
-    }
-    void nextPermutation(vector<int>& nums) {
-        set<vector<int>> ans;
-        int n = nums.size();
-
-        vector<bool> vis(n, false);
-        vector<int> cur;
-        f(nums,n,ans,cur,vis);
-
-        auto it = ans.find(nums);
-        it++;
-
-        if(it==ans.end())
-            nums = *ans.begin();
-        else
-            nums = *it;
+        reverse(nums.begin()+idx+1,nums.end());
     }
 };
